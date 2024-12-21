@@ -1,44 +1,38 @@
 'use client'
 
-import gsap from 'gsap';
-import Image from 'next/image';
-import { useRef } from 'react';
-import { useGSAP } from '@gsap/react';
+import gsap from 'gsap'
+import Image from 'next/image'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
-import { chipImg, frameImg, frameVideo } from '@/utils/data';
+import { animateRandomElement } from '@/utils/animations'
+import { chipImg, frameImg, frameVideo } from '@/utils/data'
 
 export default function HowItWorks() {
-  const videoRef = useRef(null);
+  const videoRef = useRef(null)
 
   useGSAP(() => {
-    // Animate the chip image
     gsap.from('#chip', {
       scrollTrigger: {
         trigger: '#chip',
-        start: '20% bottom',
+        start: '20% bottom'
       },
       opacity: 0,
       scale: 2,
       duration: 2,
-      ease: 'power2.inOut',
-    });
+      ease: 'power2.inOut'
+    })
 
-    // Animate the text with a stagger effect
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: '.text_fadeIn',
-        start: '20% bottom',
-      },
-    });
-
-    timeline.from('.text_fadeIn', {
-      opacity: 0,
-      y: 20,
-      duration: 1,
-      ease: 'power2.inOut',
-      stagger: 0.3, // Stagger effect
-    });
-  }, []);
+    animateRandomElement({
+      target: '.text_fadeIn',
+      animationProps: {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: 'power2.inOut'
+      }
+    })
+  }, [])
 
   return (
     <section className="common-padding">
@@ -48,7 +42,12 @@ export default function HowItWorks() {
           className="flex-center w-full my-20 mx-auto"
           style={{ maxWidth: '180px', maxHeight: '180px' }}
         >
-          <Image src={chipImg} alt="chip" width={180} height={180} />
+          <Image
+            src={chipImg}
+            alt="chip"
+            width={180}
+            height={180}
+          />
         </div>
         <div className="flex flex-col items-center">
           <h2 className="hiw-title">
@@ -89,13 +88,17 @@ export default function HowItWorks() {
         <div className="hiw-text-container">
           <div className="flex flex-1 justify-center flex-col">
             <p className="hiw-text text_fadeIn">
-              A17 Pro is an entirely new class of iPhone chip that delivers our{' '}
-              <span className="text-white">best graphic performance by far</span>.
+              A17 Pro is an entirely new class of iPhone chip that delivers our {' '}
+              <span className="text-white">
+                best graphic performance by far
+              </span>.
             </p>
 
             <p className="hiw-text text_fadeIn">
-              Mobile{' '}
-              <span className="text-white">games will look and feel so immersive</span>,
+              Mobile {' '}
+              <span className="text-white">
+                games will look and feel so immersive
+              </span>,
               with incredibly detailed environments and characters.
             </p>
           </div>
@@ -108,5 +111,5 @@ export default function HowItWorks() {
         </div>
       </div>
     </section>
-  );
+  )
 }

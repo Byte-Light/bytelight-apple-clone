@@ -1,15 +1,15 @@
-'use client'
+'use client';
 
-import gsap from 'gsap'
-import Image from 'next/image'
-import { useRef } from 'react'
-import { useGSAP } from '@gsap/react'
+import gsap from 'gsap';
+import Image from 'next/image';
+import { useRef } from 'react';
+import { useGSAP } from '@gsap/react';
 
-import { animateRandomElement } from '@/utils/animations'
-import { explore1Img, explore2Img, exploreVideo } from '@/utils/data'
+import { animateRandomElement } from '@/utils/animations';
+import { explore1Img, explore2Img, exploreVideo } from '@/utils/data';
 
 export default function Features() {
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useGSAP(() => {
     gsap.to('#exploreVideo', {
@@ -19,28 +19,27 @@ export default function Features() {
         start: '-10% bottom',
       },
       onComplete: () => {
-        videoRef.current?.play()
+        videoRef.current?.play();
       },
-    })
+    });
     animateRandomElement({
       target: '#features_title',
       animationProps: { y: 0, opacity: 1, duration: 1 },
-    })
+    });
     animateRandomElement({
       target: '.g_grow_image',
       animationProps: { scale: 1, opacity: 1, ease: 'power1' },
       scrollProps: { scrub: 5.5 },
-    })
+    });
     animateRandomElement({
       target: '.g_text',
       animationProps: { y: 0, opacity: 1, ease: 'power2.inOut', duration: 1 },
-    })
-  }, [])
+    });
+  }, []);
 
   return (
     <section className="h-full bg-gradient-to-b from-gray-900 via-black to-gray-900 py-16 px-6 md:px-12 text-white relative overflow-hidden">
       <div className="max-w-screen-xl mx-auto">
-        {/* Section Title */}
         <div className="mb-12 text-center">
           <h2
             id="features_title"
@@ -49,16 +48,12 @@ export default function Features() {
             Explore the full story.
           </h2>
         </div>
-
-        {/* Feature Headline */}
         <div className="text-center mt-16 mb-24">
           <h2 className="text-5xl lg:text-6xl font-semibold">iPhone.</h2>
           <h3 className="text-5xl lg:text-6xl font-semibold">
             Forged in titanium.
           </h3>
         </div>
-
-        {/* Video Section */}
         <div className="relative mb-16">
           <video
             id="exploreVideo"
@@ -73,14 +68,12 @@ export default function Features() {
             Your browser does not support the video player.
           </video>
         </div>
-
-        {/* Image and Text Sections */}
         <div className="grid md:grid-cols-2 gap-8">
           <div className="relative h-80 overflow-hidden">
             <Image
               src={explore1Img}
               alt="Titanium image 1"
-              className="feature-video g_grow_image w-full h-full object-cover rounded-lg shadow-lg transform scale-95 opacity-0 transition-transform duration-700"
+              className="g_grow_image w-full h-full object-cover rounded-lg shadow-lg transform scale-95 opacity-0 transition-transform duration-700"
               priority
             />
           </div>
@@ -88,12 +81,10 @@ export default function Features() {
             <Image
               src={explore2Img}
               alt="Titanium image 2"
-              className="feature-video g_grow_image w-full h-full object-cover rounded-lg shadow-lg transform scale-95 opacity-0 transition-transform duration-700"
+              className="g_grow_image w-full h-full object-cover rounded-lg shadow-lg transform scale-95 opacity-0 transition-transform duration-700"
               priority
             />
           </div>
-
-          {/* Text Sections */}
           <div className="flex items-center">
             <p className="text-lg leading-relaxed g_text opacity-0 translate-y-10 transition-transform">
               iPhone 15 Pro is{' '}
@@ -116,5 +107,5 @@ export default function Features() {
         </div>
       </div>
     </section>
-  )
+  );
 }
