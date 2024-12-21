@@ -4,26 +4,59 @@ import Image from 'next/image'
 
 export default function Navbar() {
   return (
-    <header className='w-full py-5 sm:px-10 px-5 flex justify-between items-center'>
-      <nav className='flex w-full screen-max-width'>
-        <Image src={appleImg} alt="Apple logo" width={18} height={18} />
+    <header className="w-full bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 py-4 sm:px-12 px-6 shadow-md">
+      <nav className="flex items-center justify-between max-w-screen-xl mx-auto">
+        {/* Logo Section */}
+        <div className="flex items-center">
+          <Image src={appleImg} alt="Apple logo" width={24} height={24} />
+        </div>
 
-        <ul className='flex flex-1 justify-center max-sm:hidden'>
-          {
-            navItems.map((item) => (
-              <li
-                key={item.name}
-                className='px-5 text-sm cursor-pointer text-gray hover:text-white transition'
-              >
-                {item.name}
-              </li>
-            ))
-          }
+        {/* Navigation Links */}
+        <ul className="hidden sm:flex flex-1 justify-center space-x-6">
+          {navItems.map((item) => (
+            <li
+              key={item.name}
+              className="text-sm font-medium text-indigo-300 hover:text-white transition duration-200 cursor-pointer"
+            >
+              {item.name}
+            </li>
+          ))}
         </ul>
 
-        <div className='flex items-baseline gap-7 max-sm:justify-end max-sm:flex-1'>
-          <Image src={searchImg} alt='Search logo' width={18} height={18} />
-          <Image src={bagImg} alt='Bag image' width={18} height={18} />
+        {/* Right Section */}
+        <div className="flex items-center space-x-6">
+          <Image
+            src={searchImg}
+            alt="Search logo"
+            width={20}
+            height={20}
+            className="cursor-pointer hover:scale-110 transition-transform duration-200"
+          />
+          <Image
+            src={bagImg}
+            alt="Bag image"
+            width={20}
+            height={20}
+            className="cursor-pointer hover:scale-110 transition-transform duration-200"
+          />
+        </div>
+
+        {/* Mobile Menu */}
+        <div className="sm:hidden flex items-center space-x-4">
+          <Image
+            src={searchImg}
+            alt="Search"
+            width={18}
+            height={18}
+            className="cursor-pointer"
+          />
+          <Image
+            src={bagImg}
+            alt="Bag"
+            width={18}
+            height={18}
+            className="cursor-pointer"
+          />
         </div>
       </nav>
     </header>
