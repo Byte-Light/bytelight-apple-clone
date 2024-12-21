@@ -35,7 +35,7 @@ export default function Features() {
       target: '.g_text',
       animationProps: { y: 0, opacity: 1, ease: 'power2.inOut', duration: 1 },
     });
-  }, []);
+  });
 
   return (
     <section className="h-full bg-gradient-to-b from-gray-900 via-black to-gray-900 py-16 px-6 md:px-12 text-white relative overflow-hidden">
